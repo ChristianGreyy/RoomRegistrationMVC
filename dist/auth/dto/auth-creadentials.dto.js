@@ -9,16 +9,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AuthCredentialsDto = void 0;
+exports.AuthCreadentials = void 0;
 const class_validator_1 = require("class-validator");
-class AuthCredentialsDto {
+class AuthCreadentials {
 }
 __decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MinLength)(4),
     (0, class_validator_1.MaxLength)(20),
     __metadata("design:type", String)
-], AuthCredentialsDto.prototype, "username", void 0);
+], AuthCreadentials.prototype, "username", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MinLength)(8),
@@ -27,6 +27,6 @@ __decorate([
         message: 'password too weak',
     }),
     __metadata("design:type", String)
-], AuthCredentialsDto.prototype, "password", void 0);
-exports.AuthCredentialsDto = AuthCredentialsDto;
+], AuthCreadentials.prototype, "password", void 0);
+exports.AuthCreadentials = AuthCreadentials;
 //# sourceMappingURL=auth-creadentials.dto.js.map

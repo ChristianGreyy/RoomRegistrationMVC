@@ -11,26 +11,57 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthService = void 0;
 const common_1 = require("@nestjs/common");
-const auth_creadentials_dto_1 = require("./dto/auth-creadentials.dto");
+const mongoose_1 = require("@nestjs/mongoose");
+const mongoose_2 = require("mongoose");
+const jwt_1 = require("@nestjs/jwt");
 let AuthService = class AuthService {
-    constructor() { }
-    async signUp(authCreadentialsDto) {
-        console.log(authCreadentialsDto);
-        return authCreadentialsDto;
+    constructor(userModel, jwtService) {
+        this.userModel = userModel;
+        this.jwtService = jwtService;
+    }
+    async login(authCreadentials) {
+        const { username, password } = authCreadentials;
+        const user = await this.userModel.findOne({
+            username,
+        });
+        if (!user) {
+            throw new common_1.UnauthorizedException('Invalid credentials');
+        }
+        const payload = { username: user.username, sub: user._id };
+        const accessToken = await this.jwtService.sign(payload);
+        return {
+            accessToken,
+        };
+    }
+    async validateUser(authCreadentials) {
+        const { username, password } = authCreadentials;
+        const user = await this.userModel.findOne({ username });
+        if (user && user.password === password) {
+            const { password } = user, result = __rest(user, ["password"]);
+            return result;
+        }
+        return null;
     }
 };
-__decorate([
-    __param(0, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [auth_creadentials_dto_1.AuthCredentialsDto]),
-    __metadata("design:returntype", Promise)
-], AuthService.prototype, "signUp", null);
 AuthService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [])
+    __param(0, (0, mongoose_1.InjectModel)('User')),
+    __metadata("design:paramtypes", [mongoose_2.Model,
+        jwt_1.JwtService])
 ], AuthService);
 exports.AuthService = AuthService;
 //# sourceMappingURL=auth.service.js.map

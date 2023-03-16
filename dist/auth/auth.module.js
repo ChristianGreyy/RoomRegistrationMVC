@@ -8,15 +8,28 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthModule = void 0;
 const common_1 = require("@nestjs/common");
+const jwt_1 = require("@nestjs/jwt");
+const mongoose_1 = require("@nestjs/mongoose");
+const passport_1 = require("@nestjs/passport");
+const user_schema_1 = require("../user/user.schema");
+const user_service_1 = require("../user/user.service");
 const auth_controller_1 = require("./auth.controller");
 const auth_service_1 = require("./auth.service");
-const auth_view_controller_1 = require("./auth.view.controller");
+const local_strategy_1 = require("./local.strategy");
 let AuthModule = class AuthModule {
 };
 AuthModule = __decorate([
     (0, common_1.Module)({
-        controllers: [auth_controller_1.AuthController, auth_view_controller_1.AuthViewController],
-        providers: [auth_service_1.AuthService],
+        imports: [
+            passport_1.PassportModule,
+            jwt_1.JwtModule.register({
+                secret: 'supersecret',
+                signOptions: { expiresIn: '60s' },
+            }),
+            mongoose_1.MongooseModule.forFeature([{ name: user_schema_1.User.name, schema: user_schema_1.UserSchema }]),
+        ],
+        controllers: [auth_controller_1.AuthController],
+        providers: [auth_service_1.AuthService, local_strategy_1.LocalStrategy, user_service_1.UserService],
     })
 ], AuthModule);
 exports.AuthModule = AuthModule;

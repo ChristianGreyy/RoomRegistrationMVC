@@ -1,15 +1,39 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  HttpStatus,
+  Post,
+  Req,
+  Res,
+  UseGuards,
+} from '@nestjs/common';
+import { CreateUserDto } from 'src/user/dto/create-user.dto';
+import { UserService } from 'src/user/user.service';
 import { AuthService } from './auth.service';
-import { AuthCredentialsDto } from './dto/auth-creadentials.dto';
+import { AuthCreadentials } from './dto/auth-creadentials.dto';
+import { LocalAuthGuard } from './local-auth.guard';
 
-@Controller('api/auth')
+@Controller('auth')
 export class AuthController {
-  constructor(private authService: AuthService) {}
+  constructor(
+    private readonly userService: UserService,
+    private authService: AuthService,
+  ) {}
+  @Post('register')
+  async register(@Res() response, @Body() createUserDto: CreateUserDto) {
+    const newUser = await this.userService.createUser(createUserDto);
+    return response.status(HttpStatus.CREATED).json({
+      message: 'Sign up successfully',
+      newUser,
+    });
+  }
 
-  @Post('signup')
-  async signUp(
-    @Body() authCreadentialsDto: AuthCredentialsDto,
-  ): Promise<AuthCredentialsDto> {
-    return this.authService.signUp(authCreadentialsDto);
+  // @UseGuards(LocalAuthGuard)
+  @Post('login')
+  async login(
+    @Body() authCreadentials: AuthCreadentials,
+  ): Promise<{ accessToken: string }> {
+    console.log(await this.authService.login(authCreadentials));
+    return await this.authService.login(authCreadentials);
   }
 }
