@@ -6,26 +6,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppModule = void 0;
+exports.RoomModule = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
-const app_controller_1 = require("./app.controller");
-const app_service_1 = require("./app.service");
-const auth_module_1 = require("./auth/auth.module");
-const user_module_1 = require("./user/user.module");
-const room_controller_1 = require("./rooms/room.controller");
-let AppModule = class AppModule {
+const room_controller_1 = require("./room.controller");
+const room_schema_1 = require("./room.schema");
+const room_service_1 = require("./room.service");
+let RoomModule = class RoomModule {
 };
-AppModule = __decorate([
+RoomModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            user_module_1.UserModule,
-            auth_module_1.AuthModule,
-            mongoose_1.MongooseModule.forRoot('mongodb://localhost:27017/RoomRegistration'),
+            mongoose_1.MongooseModule.forFeature([{ name: room_schema_1.Room.name, schema: room_schema_1.RoomSchema }]),
         ],
-        controllers: [app_controller_1.AppController, room_controller_1.RoomsController],
-        providers: [app_service_1.AppService],
+        controllers: [room_controller_1.RoomController],
+        providers: [room_service_1.RoomService],
     })
-], AppModule);
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+], RoomModule);
+exports.RoomModule = RoomModule;
+//# sourceMappingURL=room.module.js.map
