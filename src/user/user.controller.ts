@@ -34,12 +34,12 @@ export class UserController {
   @Put('/:id')
   async updateUser(
     @Res() response,
-    @Param('id') studentId: string,
+    @Param('id') userId: string,
     @Body() updateUserDto: UpdateUserDto,
   ) {
     try {
       const existingUser = await this.userService.updateUser(
-        studentId,
+        userId,
         updateUserDto,
       );
       return response.status(HttpStatus.OK).json({
@@ -53,19 +53,19 @@ export class UserController {
   @Get()
   async getUsers(@Res() response) {
     try {
-      const studentData = await this.userService.getAllUsers();
+      const userData = await this.userService.getAllUsers();
       return response.status(HttpStatus.OK).json({
-        message: 'All students data found successfully',
-        studentData,
+        message: 'All users data found successfully',
+        userData,
       });
     } catch (err) {
       return response.status(err.status).json(err.response);
     }
   }
   @Get('/:id')
-  async getUser(@Res() response, @Param('id') studentId: string) {
+  async getUser(@Res() response, @Param('id') userId: string) {
     try {
-      const existingUser = await this.userService.getUser(studentId);
+      const existingUser = await this.userService.getUser(userId);
       return response.status(HttpStatus.OK).json({
         message: 'User found successfully',
         existingUser,
@@ -75,9 +75,9 @@ export class UserController {
     }
   }
   @Delete('/:id')
-  async deleteUser(@Res() response, @Param('id') studentId: string) {
+  async deleteUser(@Res() response, @Param('id') userId: string) {
     try {
-      const deletedUser = await this.userService.deleteUser(studentId);
+      const deletedUser = await this.userService.deleteUser(userId);
       return response.status(HttpStatus.OK).json({
         message: 'User deleted successfully',
         deletedUser,

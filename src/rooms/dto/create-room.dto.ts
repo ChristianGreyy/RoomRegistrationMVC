@@ -26,5 +26,17 @@ export class CreateRoomDto {
 
   @IsString()
   @IsNotEmpty()
-  shift: string;
+  startHour: string;
+
+  @IsString()
+  @IsNotEmpty()
+  startMinute: string;
+
+  @IsString()
+  @IsNotEmpty()
+  endHour: string;
+
+  @IsString()
+  @IsNotEmpty()
+  endMinute: string;
 }

@@ -37,9 +37,9 @@ let UserController = class UserController {
             });
         }
     }
-    async updateUser(response, studentId, updateUserDto) {
+    async updateUser(response, userId, updateUserDto) {
         try {
-            const existingUser = await this.userService.updateUser(studentId, updateUserDto);
+            const existingUser = await this.userService.updateUser(userId, updateUserDto);
             return response.status(common_1.HttpStatus.OK).json({
                 message: 'User has been successfully updated',
                 existingUser,
@@ -51,19 +51,19 @@ let UserController = class UserController {
     }
     async getUsers(response) {
         try {
-            const studentData = await this.userService.getAllUsers();
+            const userData = await this.userService.getAllUsers();
             return response.status(common_1.HttpStatus.OK).json({
-                message: 'All students data found successfully',
-                studentData,
+                message: 'All users data found successfully',
+                userData,
             });
         }
         catch (err) {
             return response.status(err.status).json(err.response);
         }
     }
-    async getUser(response, studentId) {
+    async getUser(response, userId) {
         try {
-            const existingUser = await this.userService.getUser(studentId);
+            const existingUser = await this.userService.getUser(userId);
             return response.status(common_1.HttpStatus.OK).json({
                 message: 'User found successfully',
                 existingUser,
@@ -73,9 +73,9 @@ let UserController = class UserController {
             return response.status(err.status).json(err.response);
         }
     }
-    async deleteUser(response, studentId) {
+    async deleteUser(response, userId) {
         try {
-            const deletedUser = await this.userService.deleteUser(studentId);
+            const deletedUser = await this.userService.deleteUser(userId);
             return response.status(common_1.HttpStatus.OK).json({
                 message: 'User deleted successfully',
                 deletedUser,

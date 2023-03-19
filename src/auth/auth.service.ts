@@ -16,9 +16,8 @@ export class AuthService {
     authCreadentials: AuthCreadentials,
   ): Promise<{ accessToken: string }> {
     const { username, password } = authCreadentials;
-    const user = await this.userModel.findOne({
-      username,
-    });
+    const user = await this.validateUser(authCreadentials);
+    console.log(user);
     if (!user) {
       throw new UnauthorizedException('Invalid credentials');
     }

@@ -19,12 +19,4 @@ export class CreateUserDto {
     message: 'password too weak',
   })
   password: string;
-
-  @IsString()
-  @IsNotEmpty()
-  avatar: string;
-
-  @IsString()
-  @IsNotEmpty()
-  role: string;
 }

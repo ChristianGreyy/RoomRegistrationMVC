@@ -29,7 +29,19 @@ __decorate([
 __decorate([
     (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
-], Room.prototype, "shift", void 0);
+], Room.prototype, "startHour", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ required: true }),
+    __metadata("design:type", String)
+], Room.prototype, "startMinute", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ required: true }),
+    __metadata("design:type", String)
+], Room.prototype, "endHour", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ required: true }),
+    __metadata("design:type", String)
+], Room.prototype, "endMinute", void 0);
 __decorate([
     (0, mongoose_1.Prop)({ required: true, ref: 'User' }),
     __metadata("design:type", mongoose_2.default.Schema.Types.ObjectId)

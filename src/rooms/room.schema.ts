@@ -10,7 +10,13 @@ export class Room {
   @Prop({ required: true })
   year: string;
   @Prop({ required: true })
-  shift: string;
+  startHour: string;
+  @Prop({ required: true })
+  startMinute: string;
+  @Prop({ required: true })
+  endHour: string;
+  @Prop({ required: true })
+  endMinute: string;
   @Prop({ required: true, ref: 'User' })
   user: mongoose.Schema.Types.ObjectId;
 }

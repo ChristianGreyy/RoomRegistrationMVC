@@ -37,6 +37,21 @@ __decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
-], CreateRoomDto.prototype, "shift", void 0);
+], CreateRoomDto.prototype, "startHour", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    __metadata("design:type", String)
+], CreateRoomDto.prototype, "startMinute", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    __metadata("design:type", String)
+], CreateRoomDto.prototype, "endHour", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    __metadata("design:type", String)
+], CreateRoomDto.prototype, "endMinute", void 0);
 exports.CreateRoomDto = CreateRoomDto;
 //# sourceMappingURL=create-room.dto.js.map
