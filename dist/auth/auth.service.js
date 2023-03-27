@@ -36,15 +36,12 @@ let AuthService = class AuthService {
     async login(authCreadentials) {
         const { username, password } = authCreadentials;
         const user = await this.validateUser(authCreadentials);
-        console.log(user);
         if (!user) {
             throw new common_1.UnauthorizedException('Invalid credentials');
         }
         const payload = { username: user.username, sub: user._id };
         const accessToken = await this.jwtService.sign(payload);
-        return {
-            accessToken,
-        };
+        return accessToken;
     }
     async validateUser(authCreadentials) {
         const { username, password } = authCreadentials;

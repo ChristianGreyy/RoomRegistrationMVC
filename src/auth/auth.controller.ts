@@ -32,8 +32,12 @@ export class AuthController {
   @Post('login')
   async login(
     @Body() authCreadentials: AuthCreadentials,
+    @Res() response,
   ): Promise<{ accessToken: string }> {
-    console.log(await this.authService.login(authCreadentials));
-    return await this.authService.login(authCreadentials);
+    const accessToken = await this.authService.login(authCreadentials);
+    return response.status(HttpStatus.OK).json({
+      message: 'Sign in successfully',
+      accessToken,
+    });
   }
 }

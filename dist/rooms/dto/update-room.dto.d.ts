@@ -6,4 +6,6 @@ export declare class UpdateRoomDto {
     startMinute: string;
     endHour: string;
     endMinute: string;
+    room: string;
+    subject: string;
 }

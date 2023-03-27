@@ -12,21 +12,17 @@ export class AuthService {
     private userModel: Model<IUser>,
     private jwtService: JwtService,
   ) {}
-  async login(
-    authCreadentials: AuthCreadentials,
-  ): Promise<{ accessToken: string }> {
+  async login(authCreadentials: AuthCreadentials): Promise<string> {
     const { username, password } = authCreadentials;
     const user = await this.validateUser(authCreadentials);
-    console.log(user);
+    // console.log(user);
     if (!user) {
       throw new UnauthorizedException('Invalid credentials');
     }
     const payload = { username: user.username, sub: user._id };
     const accessToken = await this.jwtService.sign(payload);
     // console.log(accessToken);
-    return {
-      accessToken,
-    };
+    return accessToken;
   }
 
   async validateUser(authCreadentials: AuthCreadentials): Promise<any> {

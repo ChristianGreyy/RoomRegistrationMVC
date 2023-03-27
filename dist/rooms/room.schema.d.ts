@@ -7,6 +7,9 @@ export declare class Room {
     startMinute: string;
     endHour: string;
     endMinute: string;
+    room: string;
+    subject: string;
+    note: string;
     user: mongoose.Schema.Types.ObjectId;
 }
 export declare const RoomSchema: mongoose.Schema<Room, mongoose.Model<Room, any, any, any, any>, {}, {}, {}, {}, mongoose.DefaultSchemaOptions, Room>;

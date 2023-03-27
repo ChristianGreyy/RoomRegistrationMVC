@@ -17,6 +17,12 @@ export class Room {
   endHour: string;
   @Prop({ required: true })
   endMinute: string;
+  @Prop({ required: true })
+  room: string;
+  @Prop({ required: true })
+  subject: string;
+  @Prop({})
+  note: string;
   @Prop({ required: true, ref: 'User' })
   user: mongoose.Schema.Types.ObjectId;
 }

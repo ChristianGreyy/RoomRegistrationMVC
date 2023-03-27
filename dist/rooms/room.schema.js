@@ -43,6 +43,18 @@ __decorate([
     __metadata("design:type", String)
 ], Room.prototype, "endMinute", void 0);
 __decorate([
+    (0, mongoose_1.Prop)({ required: true }),
+    __metadata("design:type", String)
+], Room.prototype, "room", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ required: true }),
+    __metadata("design:type", String)
+], Room.prototype, "subject", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({}),
+    __metadata("design:type", String)
+], Room.prototype, "note", void 0);
+__decorate([
     (0, mongoose_1.Prop)({ required: true, ref: 'User' }),
     __metadata("design:type", mongoose_2.default.Schema.Types.ObjectId)
 ], Room.prototype, "user", void 0);

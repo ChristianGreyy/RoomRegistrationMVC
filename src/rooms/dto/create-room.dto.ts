@@ -39,4 +39,12 @@ export class CreateRoomDto {
   @IsString()
   @IsNotEmpty()
   endMinute: string;
+
+  @IsString()
+  @IsNotEmpty()
+  room: string;
+
+  @IsString()
+  @IsNotEmpty()
+  subject: string;
 }

@@ -7,7 +7,7 @@ export declare class AuthController {
     private authService;
     constructor(userService: UserService, authService: AuthService);
     register(response: any, createUserDto: CreateUserDto): Promise<any>;
-    login(authCreadentials: AuthCreadentials): Promise<{
+    login(authCreadentials: AuthCreadentials, response: any): Promise<{
         accessToken: string;
     }>;
 }

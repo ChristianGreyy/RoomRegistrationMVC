@@ -30,9 +30,12 @@ let AuthController = class AuthController {
             newUser,
         });
     }
-    async login(authCreadentials) {
-        console.log(await this.authService.login(authCreadentials));
-        return await this.authService.login(authCreadentials);
+    async login(authCreadentials, response) {
+        const accessToken = await this.authService.login(authCreadentials);
+        return response.status(common_1.HttpStatus.OK).json({
+            message: 'Sign in successfully',
+            accessToken,
+        });
     }
 };
 __decorate([
@@ -46,8 +49,9 @@ __decorate([
 __decorate([
     (0, common_1.Post)('login'),
     __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Res)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [auth_creadentials_dto_1.AuthCreadentials]),
+    __metadata("design:paramtypes", [auth_creadentials_dto_1.AuthCreadentials, Object]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "login", null);
 AuthController = __decorate([

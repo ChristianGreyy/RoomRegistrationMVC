@@ -6,8 +6,6 @@ export declare class AuthService {
     private userModel;
     private jwtService;
     constructor(userModel: Model<IUser>, jwtService: JwtService);
-    login(authCreadentials: AuthCreadentials): Promise<{
-        accessToken: string;
-    }>;
+    login(authCreadentials: AuthCreadentials): Promise<string>;
     validateUser(authCreadentials: AuthCreadentials): Promise<any>;
 }
