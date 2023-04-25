@@ -38,9 +38,9 @@ let RoomController = class RoomController {
             });
         }
     }
-    async updateRoom(response, studentId, updateRoomDto) {
+    async updateRoom(response, roomId, updateRoomDto) {
         try {
-            const existingRoom = await this.roomService.updateRoom(studentId, updateRoomDto);
+            const existingRoom = await this.roomService.updateRoom(roomId, updateRoomDto);
             return response.status(common_1.HttpStatus.OK).json({
                 message: 'Room has been successfully updated',
                 existingRoom,
@@ -52,19 +52,19 @@ let RoomController = class RoomController {
     }
     async getRooms(response) {
         try {
-            const studentData = await this.roomService.getAllRooms();
+            const data = await this.roomService.getAllRooms();
             return response.status(common_1.HttpStatus.OK).json({
-                message: 'All students data found successfully',
-                studentData,
+                message: 'All rooms data found successfully',
+                data,
             });
         }
         catch (err) {
             return response.status(err.status).json(err.response);
         }
     }
-    async getRoom(response, studentId) {
+    async getRoom(response, roomId) {
         try {
-            const existingRoom = await this.roomService.getRoom(studentId);
+            const existingRoom = await this.roomService.getRoom(roomId);
             return response.status(common_1.HttpStatus.OK).json({
                 message: 'Room found successfully',
                 existingRoom,
@@ -74,9 +74,9 @@ let RoomController = class RoomController {
             return response.status(err.status).json(err.response);
         }
     }
-    async deleteRoom(response, studentId) {
+    async deleteRoom(response, roomId) {
         try {
-            const deletedRoom = await this.roomService.deleteRoom(studentId);
+            const deletedRoom = await this.roomService.deleteRoom(roomId);
             return response.status(common_1.HttpStatus.OK).json({
                 message: 'Room deleted successfully',
                 deletedRoom,

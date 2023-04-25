@@ -60,10 +60,10 @@ export class SubjectController {
   @Get()
   async getSubjects(@Res() response) {
     try {
-      const studentData = await this.subjectService.getAllSubjects();
+      const data = await this.subjectService.getAllSubjects();
       return response.status(HttpStatus.OK).json({
         message: 'All students data found successfully',
-        studentData,
+        data,
       });
     } catch (err) {
       return response.status(err.status).json(err.response);

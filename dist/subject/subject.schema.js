@@ -18,7 +18,7 @@ __decorate([
     __metadata("design:type", String)
 ], Subject.prototype, "name", void 0);
 Subject = __decorate([
-    (0, mongoose_1.Schema)()
+    (0, mongoose_1.Schema)({ timestamps: true })
 ], Subject);
 exports.Subject = Subject;
 exports.SubjectSchema = mongoose_1.SchemaFactory.createForClass(Subject);

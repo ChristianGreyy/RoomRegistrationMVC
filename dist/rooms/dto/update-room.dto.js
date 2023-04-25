@@ -14,54 +14,11 @@ const class_validator_1 = require("class-validator");
 class UpdateRoomDto {
 }
 __decorate([
-    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNumber)(),
     (0, class_validator_1.MinLength)(1),
     (0, class_validator_1.MaxLength)(2),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
-], UpdateRoomDto.prototype, "day", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.MinLength)(1),
-    (0, class_validator_1.MaxLength)(2),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], UpdateRoomDto.prototype, "month", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.MinLength)(4),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], UpdateRoomDto.prototype, "year", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], UpdateRoomDto.prototype, "startHour", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], UpdateRoomDto.prototype, "startMinute", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], UpdateRoomDto.prototype, "endHour", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], UpdateRoomDto.prototype, "endMinute", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], UpdateRoomDto.prototype, "room", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], UpdateRoomDto.prototype, "subject", void 0);
+], UpdateRoomDto.prototype, "name", void 0);
 exports.UpdateRoomDto = UpdateRoomDto;
 //# sourceMappingURL=update-room.dto.js.map

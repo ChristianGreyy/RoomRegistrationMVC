@@ -51,10 +51,10 @@ let UserController = class UserController {
     }
     async getUsers(response) {
         try {
-            const userData = await this.userService.getAllUsers();
+            const data = await this.userService.getAllUsers();
             return response.status(common_1.HttpStatus.OK).json({
                 message: 'All users data found successfully',
-                userData,
+                data,
             });
         }
         catch (err) {

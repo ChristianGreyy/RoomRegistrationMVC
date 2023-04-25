@@ -40,7 +40,7 @@ let AuthService = class AuthService {
             throw new common_1.UnauthorizedException('Invalid credentials');
         }
         const payload = { username: user.username, sub: user._id };
-        const accessToken = await this.jwtService.sign(payload);
+        const accessToken = await this.jwtService.signAsync(payload);
         return accessToken;
     }
     async validateUser(authCreadentials) {

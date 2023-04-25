@@ -5,8 +5,8 @@ export declare class RoomController {
     private readonly roomService;
     constructor(roomService: RoomService);
     createRoom(response: any, createRoomDto: CreateRoomDto): Promise<any>;
-    updateRoom(response: any, studentId: string, updateRoomDto: UpdateRoomDto): Promise<any>;
+    updateRoom(response: any, roomId: string, updateRoomDto: UpdateRoomDto): Promise<any>;
     getRooms(response: any): Promise<any>;
-    getRoom(response: any, studentId: string): Promise<any>;
-    deleteRoom(response: any, studentId: string): Promise<any>;
+    getRoom(response: any, roomId: string): Promise<any>;
+    deleteRoom(response: any, roomId: string): Promise<any>;
 }

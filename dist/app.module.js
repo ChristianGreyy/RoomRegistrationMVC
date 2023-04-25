@@ -14,9 +14,11 @@ const path_1 = require("path");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const auth_module_1 = require("./auth/auth.module");
-const room_module_1 = require("./rooms/room.module");
+const lesson_module_1 = require("./lesson/lesson.module");
+const calendar_module_1 = require("./calendars/calendar.module");
 const subject_module_1 = require("./subject/subject.module");
 const user_module_1 = require("./user/user.module");
+const room_module_1 = require("./rooms/room.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -24,8 +26,10 @@ AppModule = __decorate([
         imports: [
             user_module_1.UserModule,
             auth_module_1.AuthModule,
-            room_module_1.RoomModule,
+            calendar_module_1.CalendarModule,
             subject_module_1.SubjectModule,
+            room_module_1.RoomModule,
+            lesson_module_1.LessonModule,
             mongoose_1.MongooseModule.forRoot('mongodb://localhost:27017/RoomRegistration'),
             serve_static_1.ServeStaticModule.forRoot({
                 rootPath: (0, path_1.join)(__dirname, '..', 'public'),

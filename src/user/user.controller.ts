@@ -8,10 +8,13 @@ import {
   Post,
   Put,
   Res,
+  UseGuards,
 } from '@nestjs/common';
+import { AuthGuard } from 'src/auth/auth.guard';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserService } from './user.service';
+
 @Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
@@ -50,13 +53,14 @@ export class UserController {
       return response.status(err.status).json(err.response);
     }
   }
+  // @UseGuards(AuthGuard)
   @Get()
   async getUsers(@Res() response) {
     try {
-      const userData = await this.userService.getAllUsers();
+      const data = await this.userService.getAllUsers();
       return response.status(HttpStatus.OK).json({
         message: 'All users data found successfully',
-        userData,
+        data,
       });
     } catch (err) {
       return response.status(err.status).json(err.response);

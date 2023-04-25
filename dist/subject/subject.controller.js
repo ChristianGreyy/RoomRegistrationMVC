@@ -53,10 +53,10 @@ let SubjectController = class SubjectController {
     }
     async getSubjects(response) {
         try {
-            const studentData = await this.subjectService.getAllSubjects();
+            const data = await this.subjectService.getAllSubjects();
             return response.status(common_1.HttpStatus.OK).json({
                 message: 'All students data found successfully',
-                studentData,
+                data,
             });
         }
         catch (err) {

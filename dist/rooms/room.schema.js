@@ -11,53 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RoomSchema = exports.Room = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const mongoose_2 = require("mongoose");
 let Room = class Room {
 };
 __decorate([
     (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
-], Room.prototype, "day", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ required: true }),
-    __metadata("design:type", String)
-], Room.prototype, "month", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ required: true }),
-    __metadata("design:type", String)
-], Room.prototype, "year", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ required: true }),
-    __metadata("design:type", String)
-], Room.prototype, "startHour", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ required: true }),
-    __metadata("design:type", String)
-], Room.prototype, "startMinute", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ required: true }),
-    __metadata("design:type", String)
-], Room.prototype, "endHour", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ required: true }),
-    __metadata("design:type", String)
-], Room.prototype, "endMinute", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ required: true }),
-    __metadata("design:type", String)
-], Room.prototype, "room", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ required: true }),
-    __metadata("design:type", String)
-], Room.prototype, "subject", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({}),
-    __metadata("design:type", String)
-], Room.prototype, "note", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ required: true, ref: 'User' }),
-    __metadata("design:type", mongoose_2.default.Schema.Types.ObjectId)
-], Room.prototype, "user", void 0);
+], Room.prototype, "name", void 0);
 Room = __decorate([
     (0, mongoose_1.Schema)()
 ], Room);
